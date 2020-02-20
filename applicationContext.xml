@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+<context:property-placeholder location="classpath:abc.properties"/>
+
+	<bean id="format" class="com.log.Format" />
+
+	<bean id="FileLogger" class="com.log.FileLogger"
+		init-method="suru" destroy-method="khatam">
+
+	</bean>
+	<bean id="DbFile" class="com.log.DbLogger">
+		<constructor-arg ref="format" />
+
+	</bean>
+<bean id="User" class="com.log.User">
+<property name="email" value="${email}"/>
+</bean>
+
+
+
+<bean id="col" class="com.log.CollectionTest">
+<property name="addressList">
+<list>
+<value>List1</value>
+<value>List2</value>
+<value>List3</value>
+<value>List4</value>
+</list>
+</property>
+<property name="addressSet">
+<set>
+<value>Set1</value>
+<value>Set2</value>
+<value>Set3</value>
+<value>Set4</value>
+</set>
+</property>
+<property name="addressMap">
+<map>
+<entry key="key1" value="value1"/>
+<entry key="key2" value="value2"/>
+<entry key="key3" value="value3"/>
+<entry key="key4" value="value4"/>
+</map>
+</property>
+<property name="addressProp">
+<props>
+<prop key="pro1">value1</prop>
+<prop key="pro2">value2</prop>
+<prop key="pro3">value3</prop>
+<prop key="pro4">value4</prop>
+</props>
+</property>
+</bean>
+
+</beans>
+
+
+
+
+
